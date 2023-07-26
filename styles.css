@@ -1,0 +1,34 @@
+body{
+    text-align: center;
+    background-color: papayawhip;
+}
+label{
+    display:block;
+    margin:10px;
+    font-size: larger;
+    padding: 4px;
+    margin-top:20px;
+    color: black;
+    
+}
+input{
+    padding: 10px;
+    border-radius: 0.1rem;
+    color:black;
+    width: 250px;
+
+}
+h1{
+    color:black;
+    text-align: center;
+}
+button{
+    width:100px;
+    height: 40px;
+   
+}
+.container-center{
+    padding-top: 2rem;
+    margin:10px;
+    font-size: 200%;
+}
