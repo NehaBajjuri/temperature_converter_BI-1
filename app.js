@@ -1,72 +1,54 @@
-//selected elements using their id
-
-function convertTemperature() {
-    const temperatureInput = document.getElementById("temperature");
-    const unitSelect = document.getElementById("unit");
-    const temperature = parseFloat(temperatureInput.value);
-    const selectedUnit = unitSelect.value;
-    if (selectedUnit === " ")
-    {
-        ShowMessage("Please select an option.");
-    }
-    else if (selectedUnit === "celsius") {
-        document.getElementById("kelvin").value = (temperature + 273.15).toFixed(2);
-        document.getElementById("fahrenheit").value = ((temperature * 9/5) + 32).toFixed(2);
-        document.getElementById("rankine").value = ((temperature + 273.15) * 9/5).toFixed(2);
-    } else if (selectedUnit === "kelvin") {
-        document.getElementById("celsius").value = (temperature - 273.15).toFixed(2);
-        document.getElementById("fahrenheit").value = ((temperature * 9/5) - 459.67).toFixed(2);
-        document.getElementById("rankine").value = (temperature * 9/5).toFixed(2);
-    } else if (selectedUnit === "fahrenheit") {
-        document.getElementById("celsius").value = ((temperature - 32) * 5/9).toFixed(2);
-        document.getElementById("kelvin").value = ((temperature + 459.67) * 5/9).toFixed(2);
-        document.getElementById("rankine").value = (temperature + 459.67).toFixed(2);
-    } else if (selectedUnit === "rankine") {
-        document.getElementById("celsius").value = ((temperature - 491.67) * 5/9).toFixed(2);
-        document.getElementById("kelvin").value = (temperature * 5/9).toFixed(2);
-        document.getElementById("fahrenheit").value = (temperature - 459.67).toFixed(2);
-    }
-}
-
-function profitOrLoss(){
-   
-        var ip = initialPrice.value;
-        var qty = stocksQuant.value;
-        var curr = currentPrice.value;
-        calculate(ip, qty, curr);
-        if(ip =="" || qty == ""||curr =="")
-        {
-            ShowMessage("Please fill up everything.");
-        }
-        else if(ip <=0 || qty <= 0||curr <=0 )
-        {
-            ShowMessage("Please enter the valid figures!");
-        }
-
-    }
-
-function calculate(initial,quantity,current)
+const calculateTemp=() =>
 {
-    if(initial>current)
+    const numberTemp = document.getElementById('temp').value;
+    const tempSelected = document.getElementById('temp_diff');
+    const valueTemp=temp_diff.options[tempSelected.selectedIndex].value;
+    
+
+    const celToRem = (cel) =>
     {
-       var loss = (initial-current) * quantity;
-       var lossPercentage = (loss/initial) * 100;
-       ShowMessage( `Hey, the loss is ${loss} and the loss percentage is ${lossPercentage.toFixed(2)}% `) ;
+        let resultArray = [(cel + 273.15),((cel* 9/5 )+ 32), ((cel*9/5) + 491.67)];
+        return resultArray;
     }
-    else if(current>initial)
+    const kelToRem = (kel) =>
     {
-        var profit = (current-initial) * quantity;
-        var profitPercentage=(profit/initial) * 100;
-        ShowMessage(`Hey the profit is ${profit} and the profit percentage is ${profitPercentage.toFixed(3)}%`);
+        let resultArray = [( kel - 273.15),((kel * 9/5) - 459.67), (kel * 9/5)];
+        return resultArray;
     }
-    else{
-      ShowMessage(`No loss!!No profit!!`);
+    const farToRem = (far) =>
+    {
+        let resultArray = [( (far - 32)*(5/9)),( (far + 459.67)*(5/9)), ( far + 459.67)];
+        return resultArray;
+    }
+    const ranToRem = (ran) =>
+    {
+        let resultArray = [( ( ran - 491.67) / 1.8),(ran / 1.8), (ran - 459.67)];
+        return resultArray;
+    }
+    var resultArr = new Array(3);
+    if(valueTemp== 'cel')
+    {
+let resultArr = celToRem(Number(numberTemp));
+
+let resultContainer = document.getElementById('resultContainer');
+
+// Concatenate all conversion results into a single string and update the resultContainer's innerHTML
+resultContainer.innerHTML = `=${resultArr[0]} Kelvin<br>=${resultArr[1]} °Fahrenheit<br>=${resultArr[2]} °Rankine`;
+
+    }
+    else if(valueTemp== 'kel')
+    {
+        resultArr= kelToRem(numberTemp);
+        resultContainer.innerHTML = `=${resultArr[0]} °Celsius <br>=${resultArr[1]} °Fahrenheit<br>=${resultArr[2]} °Rankine`;
+    }
+    else if(valueTemp== 'far')
+    {
+        resultArr= farToRem(numberTemp);
+        resultContainer.innerHTML = `=${resultArr[0]} °Celsius= <br>=${resultArr[1]} Kelvin <br>=${resultArr[2]} °Rankine`;
+    }
+    else if(valueTemp== 'ran')
+    {
+        resultArr= ranToRem(numberTemp);
+        resultContainer.innerHTML = `=${resultArr[0]} °Celsius= <br>=${resultArr[1]} Kelvin <br>=${resultArr[2]} °Farenheit`;
     }
 }
-function ShowMessage(message)
-{
-    outPutBox.innerText = message;
-}
-
-submitBtn.addEventListener("click",profitOrLoss);
-
