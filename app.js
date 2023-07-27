@@ -44,11 +44,11 @@ resultContainer.innerHTML = `=${resultArr[0]} Kelvin<br>=${resultArr[1]} °Fahre
     else if(valueTemp== 'far')
     {
         resultArr= farToRem(numberTemp);
-        resultContainer.innerHTML = `=${resultArr[0]} °Celsius= <br>=${resultArr[1]} Kelvin <br>=${resultArr[2]} °Rankine`;
+        resultContainer.innerHTML = `=${resultArr[0]} °Celsius<br>=${resultArr[1]} Kelvin <br>=${resultArr[2]} °Rankine`;
     }
     else if(valueTemp== 'ran')
     {
         resultArr= ranToRem(numberTemp);
-        resultContainer.innerHTML = `=${resultArr[0]} °Celsius= <br>=${resultArr[1]} Kelvin <br>=${resultArr[2]} °Farenheit`;
+        resultContainer.innerHTML = `=${resultArr[0]} °Celsius<br>=${resultArr[1]} Kelvin <br>=${resultArr[2]} °Farenheit`;
     }
 }

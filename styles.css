@@ -16,19 +16,37 @@ input{
     border-radius: 0.1rem;
     color:black;
     width: 250px;
-
+    text-align: center;
+    margin-bottom: 20px;
 }
 h1{
     color:black;
     text-align: center;
 }
-button{
+#temp_diff{
+    width:100px;
+    height:30px;
+    font-weight: 300;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+#submitbtn{
     width:100px;
     height: 40px;
-   
+    padding-top: 2.5% ,2.5%;
+    text-align: center ;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#divcss
+{
+    padding-top: 5rem;
 }
 .container-center{
     padding-top: 2rem;
     margin:10px;
     font-size: 200%;
+}
+#resultContainer
+{
+    font-size: x-large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
