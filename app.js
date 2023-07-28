@@ -32,7 +32,7 @@ let resultArr = celToRem(Number(numberTemp));
 
 let resultContainer = document.getElementById('resultContainer');
 
-// Concatenate all conversion results into a single string and update the resultContainer's innerHTML
+
 resultContainer.innerHTML = `=${resultArr[0]} Kelvin<br>=${resultArr[1]} °Fahrenheit<br>=${resultArr[2]} °Rankine`;
 
     }
